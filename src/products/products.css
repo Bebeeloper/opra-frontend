@@ -1,0 +1,61 @@
+.main-container {
+    /* background-color: aqua; */
+    overflow-y: scroll;
+}
+
+.main-container h1{
+    padding: 3rem;
+    font-size: 3.6rem;
+    color: white;
+}
+
+.main-container .products-container{
+    padding: 3rem;
+    margin: 0 3rem;
+    border-radius: 1rem;
+    background-color: rgb(8, 0, 19);
+    color: white;
+    font-size: 1.4rem;
+}
+
+.main-container .products-container .product-search {
+    width: 50%;
+    display: flex;
+    background-color: rgb(18, 0, 48);
+    border: 0.2rem solid rgba(255, 255, 255, 0.116);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.main-container .products-container .product-search input{
+    padding: 1.5rem;
+    width: 90%;
+    border: none;
+    background-color: rgb(18, 0, 48);
+    color: rgba(255, 255, 255, 0.671);
+    font-size: 1.5rem;
+}
+
+.main-container .products-container .product-search input:focus{
+    outline: none;
+}
+
+.main-container .products-container .product-search button{
+    border: none;
+    background-color: transparent;
+    font-size: 2.5rem;
+}
+
+.main-container .products-container table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.main-container .products-container table .header-table{
+    border-bottom: 0.1rem solid rgba(168, 168, 168, 0.219);
+}
+
+.main-container .products-container table .header-table td{
+    padding: 2rem 0;
+    /* border: 0.5rem solid #fff; */
+}

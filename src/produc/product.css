@@ -1,0 +1,20 @@
+.product-card {
+    /* background-color: aqua; */
+    border-bottom: 0.1rem solid rgba(168, 168, 168, 0.219);
+}
+
+.product-card .td-image {
+    margin: 0;
+    width: 10.2rem;
+}
+
+.product-card .td-image figure {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    width: 9rem;
+}
+
+.product-card .td-image figure img{
+    width: 100%;
+}
+
+

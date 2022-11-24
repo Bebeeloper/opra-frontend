@@ -1,5 +1,7 @@
-import {React, useEffect, useState } from 'react'
+import './products.css'
+import { React, useEffect, useState } from 'react'
 import { Product } from '../produc/product';
+import { FcSearch } from 'react-icons/fc';
   
 function Products(){
 
@@ -18,11 +20,22 @@ function Products(){
   return (
     <main className='main-container'>
         <h1>Inventario</h1>
-        <input placeholder='Filtrar producto por nombre' type="text" />
         <section className='products-container'>
-            {productsArray.map(pro => (
-                <Product product = {pro} key={pro.refId}/>
-            ))}
+            <div className='product-search'>
+                <input placeholder='Filtrar producto por nombre' type="text" />
+                <button><FcSearch/></button>
+            </div>
+            <table>
+                <tr className='header-table'>
+                    <td>Imagen</td>
+                    <td>Referencia</td>
+                    <td>Nombre del producto</td>
+                    <td>Precio</td>
+                </tr>
+                {productsArray.map(pro => (
+                    <Product product = {pro} key={pro.refId}/>
+                ))}
+            </table>
         </section>
     </main>
   )
