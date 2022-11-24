@@ -12,6 +12,7 @@ function Product({product}) {
         </td>
         <td>{product.ref}</td>
         <td>{product.name}</td>
+        <td>{product.cost}</td>
         <td>{product.price}</td>
     </tr>
   )

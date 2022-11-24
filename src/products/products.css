@@ -41,9 +41,14 @@
 }
 
 .main-container .products-container .product-search button{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     background-color: transparent;
     font-size: 2.5rem;
+    cursor: pointer;
 }
 
 .main-container .products-container table{
@@ -57,5 +62,10 @@
 
 .main-container .products-container table .header-table td{
     padding: 2rem 0;
-    /* border: 0.5rem solid #fff; */
+}
+
+.main-container .products-container table .header-table td:not(:first-child) div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

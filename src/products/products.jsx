@@ -2,6 +2,7 @@ import './products.css'
 import { React, useEffect, useState } from 'react'
 import { Product } from '../produc/product';
 import { FcSearch } from 'react-icons/fc';
+import { BsArrowDownUp } from 'react-icons/bs';
   
 function Products(){
 
@@ -28,9 +29,30 @@ function Products(){
             <table>
                 <tr className='header-table'>
                     <td>Imagen</td>
-                    <td>Referencia</td>
-                    <td>Nombre del producto</td>
-                    <td>Precio</td>
+                    <td> 
+                        <div> 
+                            <p>Referencia</p> 
+                            <BsArrowDownUp/> 
+                        </div> 
+                    </td>
+                    <td> 
+                        <div> 
+                            <p>Nombre del producto</p> 
+                            <BsArrowDownUp/> 
+                        </div> 
+                    </td>
+                    <td> 
+                        <div> 
+                            <p>Costo</p> 
+                            <BsArrowDownUp/> 
+                        </div> 
+                    </td>
+                    <td> 
+                        <div> 
+                            <p>Precio</p> 
+                            <BsArrowDownUp/> 
+                        </div> 
+                    </td>
                 </tr>
                 {productsArray.map(pro => (
                     <Product product = {pro} key={pro.refId}/>
