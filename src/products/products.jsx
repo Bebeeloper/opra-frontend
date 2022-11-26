@@ -4,13 +4,14 @@ import { Product } from '../produc/product';
 import { FcSearch } from 'react-icons/fc';
 import { BsArrowDownUp } from 'react-icons/bs';
 import { MdCancel } from 'react-icons/md';
+import { TbFaceIdError } from 'react-icons/tb';
   
 function Products(){
 
     const [productsArray, setProducts] = useState([]);
     const [productsNameArray, setProductsName] = useState([]);
     let [filterName, setFilterName] = useState(false);
-    
+    let [notFound, setNotFound] = useState(false);
 
     console.log(filterName);
 
@@ -24,18 +25,25 @@ function Products(){
 
       const filterByName = event => {
         let productName = document.getElementById('filter');
-        fetch("http://localhost:3002/api/v1/products/name/" + productName.value)
-          .then((response) => response.json())
-          .then((data) => {
-            setProductsName(data.data); // ⬅️ Guardar datos
-            setFilterName(true);
-          });
+        if (productName.value !== '') {
+            fetch("http://localhost:3002/api/v1/products/name/" + productName.value)
+              .then((response) => response.json())
+              .then((data) => {
+                setProductsName(data.data); // ⬅️ Guardar datos
+                setFilterName(true);
+              });
+        }else {
+            setProductsName(null);
+            // setFilterName(false);
+            setNotFound(true);
+        }
       }
 
       const clearContent = event =>{
         let productName = document.getElementById('filter');
         setFilterName(false);
         productName.value = '';
+        setNotFound(false);
       };
 
       const addProduct = event =>{
@@ -46,7 +54,7 @@ function Products(){
                 name: 'Bicicletaaaa',
                 cost: 10000,
                 price: 20000,
-                image: 'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                image: 'https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2022/08/toyota-t-bike-bicicleta-electrica-toyota-2791257.jpg'
             }),
             headers: {
               'Content-type': 'application/json; charset=UTF-8',
@@ -103,17 +111,25 @@ function Products(){
                     </td>
                 </tr>
                 {
-                    filterName === true ?                     
-                        productsNameArray.map(prod => (
-                            <Product product = {prod} key={prod.refId}/>
-                        ))
-                        
+                    filterName === true ?
+                        // productsNameArray.length === 0 ? 
+                        //     <h3 className='not-found'><TbFaceIdError/> Lo sentimos, no encontramos productos</h3> 
+                        // :             
+                            productsNameArray.map(prod => (
+                                <Product product = {prod} key={prod.refId}/>
+                            )) 
                     :
                         productsArray.map(pro => (
                             <Product product = {pro} key={pro.refId}/>
                         ))
                 }
             </table>
+            {
+                notFound && productsNameArray?.length === 0 ? 
+                    <div className='not-found'><TbFaceIdError/></div> 
+                : 
+                    ''
+            }
         </section>
     </main>
   )
