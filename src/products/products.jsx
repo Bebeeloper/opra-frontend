@@ -31,10 +31,35 @@ function Products(){
             setFilterName(true);
           });
       }
+
       const clearContent = event =>{
         let productName = document.getElementById('filter');
         setFilterName(false);
         productName.value = '';
+      };
+
+      const addProduct = event =>{
+        fetch('http://localhost:3002/api/v1/products', {
+            method: 'POST',
+            body: JSON.stringify({
+                ref: '0005',
+                name: 'Bicicletaaaa',
+                cost: 10000,
+                price: 20000,
+                image: 'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          })
+             .then((response) => response.json())
+             .then((data) => {
+                console.log(data);
+                // Handle data
+             })
+             .catch((err) => {
+                console.log(err.message);
+             });
       };
 
   return (
@@ -47,6 +72,7 @@ function Products(){
                     <button onClick={filterByName}><FcSearch/></button>
                 </div>
                 <button onClick={clearContent}> <MdCancel/></button>
+                <button onClick={addProduct}> + </button>
             </div>
             <table>
                 <tr className='header-table'>

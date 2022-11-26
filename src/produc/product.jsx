@@ -7,7 +7,7 @@ function Product({product}) {
     <tr className='product-card'>
         <td className='td-image'>
           <figure>
-              <img src={product.Image} alt="" />
+              <img src={product.image} alt="" />
           </figure>
         </td>
         <td>{product.ref}</td>
