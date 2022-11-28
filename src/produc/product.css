@@ -22,4 +22,13 @@
     border-radius: 1rem;
 }
 
+.product-card .edit-delete{
+    text-align: center;
+    cursor: pointer;
+    font-size: 2rem;
+}
 
+.product-card .edit-delete:hover{
+    color: blueviolet;
+    /* color: white; */
+}
