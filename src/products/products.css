@@ -6,16 +6,15 @@
 .main-container h1{
     padding: 3rem;
     font-size: 3.6rem;
-    color: white;
+    color: rgb(66, 66, 66);
 }
 
 .main-container .products-container{
     padding: 3rem;
-    margin: 0 3rem;
+    margin: 0 3rem 3rem 3rem;
     border-radius: 1rem;
-    background-color: rgb(8, 0, 19);
-    color: white;
     font-size: 1.4rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .main-container .products-container .product-filters{
@@ -35,14 +34,15 @@
     background-color: transparent;
     font-size: 5rem;
     cursor: pointer;
-    color: white;
+    /* color: white; */
 }
 
 .main-container .products-container .product-search {
     width: 50%;
     display: flex;
-    background-color: rgb(18, 0, 48);
-    border: 0.2rem solid rgba(255, 255, 255, 0.116);
+    /* background-color: rgb(122, 33, 204); */
+    border: 0.2rem solid rgba(0, 0, 0, 0.247);
+    /* box-shadow: rgba(10, 10, 10, 0.1) 0px 8px 24px; */
     border-radius: 1rem;
     overflow: hidden;
 }
@@ -51,8 +51,8 @@
     padding: 1.5rem;
     width: 90%;
     border: none;
-    background-color: rgb(18, 0, 48);
-    color: rgba(255, 255, 255, 0.671);
+    /* background-color: rgb(18, 0, 48); */
+    /* color: rgba(255, 255, 255, 0.671); */
     font-size: 1.5rem;
 }
 
@@ -71,6 +71,9 @@
     cursor: pointer;
 }
 
+.cancel-btn {
+    color: rgb(122, 33, 204);
+}
 .main-container .products-container table{
     width: 100%;
     border-collapse: collapse;
@@ -90,16 +93,16 @@
     font-size: 7rem;
 }
 
-.main-container .products-container table .header-table td{
+.main-container .products-container table .header-table th{
     padding: 2rem 0;
 }
 
-.main-container .products-container table .header-table td:not(:first-child) div{
+.main-container .products-container table .header-table th:not(:first-child) div{
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
 }
 
-.main-container .products-container table .header-table td:not(:first-child) div .icon-arrow{
+.main-container .products-container table .header-table th:not(:first-child) div .icon-arrow{
     margin-left: 1rem;
 }

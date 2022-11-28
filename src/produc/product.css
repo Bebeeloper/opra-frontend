@@ -3,6 +3,10 @@
     border-bottom: 0.1rem solid rgba(168, 168, 168, 0.219);
 }
 
+.product-card td:first-child {
+    text-align: center;
+}
+
 .product-card .td-image {
     margin: 0;
     width: 10.2rem;
@@ -15,6 +19,7 @@
 
 .product-card .td-image figure img{
     width: 100%;
+    border-radius: 1rem;
 }
 
 

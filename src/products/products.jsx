@@ -1,10 +1,11 @@
 import './products.css'
 import { React, useEffect, useState } from 'react'
 import { Product } from '../produc/product';
-import { FcSearch } from 'react-icons/fc';
+import { FiSearch } from 'react-icons/fi';
 import { BsArrowDownUp } from 'react-icons/bs';
 import { MdCancel } from 'react-icons/md';
 import { TbFaceIdError } from 'react-icons/tb';
+import { FcAddDatabase } from 'react-icons/fc';
   
 function Products(){
 
@@ -77,50 +78,48 @@ function Products(){
             <div className='product-filters'>
                 <div className='product-search'>
                     <input id='filter' placeholder='Filtrar producto por nombre' type="text" />
-                    <button onClick={filterByName}><FcSearch/></button>
+                    <button onClick={filterByName}><FiSearch/></button>
                 </div>
-                <button onClick={clearContent}> <MdCancel/></button>
-                <button onClick={addProduct}> + </button>
+                <button onClick={clearContent}> <MdCancel className='cancel-btn'/></button>
+                <button onClick={addProduct}> <FcAddDatabase/> </button>
             </div>
             <table>
                 <tr className='header-table'>
-                    <td>Imagen</td>
-                    <td> 
+                    <th> # </th>
+                    <th>Imagen</th>
+                    <th> 
                         <div> 
                             <p>Referencia</p> 
                             <BsArrowDownUp className='icon-arrow'/> 
                         </div> 
-                    </td>
-                    <td> 
+                    </th>
+                    <th> 
                         <div> 
                             <p>Nombre del producto</p> 
                             <BsArrowDownUp className='icon-arrow'/> 
                         </div> 
-                    </td>
-                    <td> 
+                    </th>
+                    <th> 
                         <div> 
                             <p>Costo</p> 
                             <BsArrowDownUp className='icon-arrow'/> 
                         </div> 
-                    </td>
-                    <td> 
+                    </th>
+                    <th> 
                         <div> 
                             <p>Precio</p> 
                             <BsArrowDownUp className='icon-arrow'/> 
                         </div> 
-                    </td>
+                    </th>
                 </tr>
                 {
-                    filterName === true ?
-                        // productsNameArray.length === 0 ? 
-                        //     <h3 className='not-found'><TbFaceIdError/> Lo sentimos, no encontramos productos</h3> 
-                        // :             
-                            productsNameArray.map(prod => (
-                                <Product product = {prod} key={prod.refId}/>
-                            )) 
+                    filterName === true ?          
+                        productsNameArray.map((prod, i) => (
+                            <Product product = {prod} key={prod.refId} index={i}/>
+                        )) 
                     :
-                        productsArray.map(pro => (
-                            <Product product = {pro} key={pro.refId}/>
+                        productsArray.map((pro, i) => (
+                            <Product product = {pro} key={pro.refId} index={i}/>
                         ))
                 }
             </table>
