@@ -4,10 +4,13 @@ import { Product } from '../produc/product';
 import { BsArrowDownUp } from 'react-icons/bs';
 import { TbFaceIdError } from 'react-icons/tb';
 import { FcAddDatabase } from 'react-icons/fc';
+
+import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
   
 function Products(){
 
     const [productsNameArray, setProductsName] = useState([]);
+    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:3002/api/v1/products")
@@ -19,27 +22,28 @@ function Products(){
       }, []);
 
       const addProduct = event =>{
-        fetch('http://localhost:3002/api/v1/products', {
-            method: 'POST',
-            body: JSON.stringify({
-                ref: '0005',
-                name: 'Bicicletaaaa',
-                cost: 10000,
-                price: 20000,
-                image: 'https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2022/08/toyota-t-bike-bicicleta-electrica-toyota-2791257.jpg'
-            }),
-            headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-          })
-             .then((response) => response.json())
-             .then((data) => {
-                console.log(data);
-                // Handle data
-             })
-             .catch((err) => {
-                console.log(err.message);
-             });
+        setOpenModal(true);
+        // fetch('http://localhost:3002/api/v1/products', {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         ref: '0005',
+        //         name: 'Bicicletaaaa',
+        //         cost: 10000,
+        //         price: 20000,
+        //         image: 'https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2022/08/toyota-t-bike-bicicleta-electrica-toyota-2791257.jpg'
+        //     }),
+        //     headers: {
+        //       'Content-type': 'application/json; charset=UTF-8',
+        //     },
+        //   })
+        //      .then((response) => response.json())
+        //      .then((data) => {
+        //         console.log(data);
+        //         // Handle data
+        //      })
+        //      .catch((err) => {
+        //         console.log(err.message);
+        //      });
       };
 
       const onChangeSearch = event =>{
@@ -62,7 +66,8 @@ function Products(){
       };
 
   return (
-    <main className='main-container'>
+      <main className='main-container'>
+        <ModalPostProduct isOpen={openModal} openModal={openModal} setOpenModal={setOpenModal} />
         <h1>Inventario</h1>
         <section className='products-container'>
             <div className='product-filters'>
@@ -116,6 +121,7 @@ function Products(){
                     ''
             }
         </section>
+        
     </main>
   )
 }
