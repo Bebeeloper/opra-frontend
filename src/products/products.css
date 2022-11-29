@@ -1,6 +1,7 @@
 .main-container {
     /* background-color: aqua; */
     overflow-y: scroll;
+    /* position: relative; */
 }
 
 .main-container h1{
