@@ -80,6 +80,12 @@ function Products(){
                     </th>
                     <th> 
                         <div> 
+                            <p>Cantidad</p> 
+                            <BsArrowDownUp className='icon-arrow'/> 
+                        </div> 
+                    </th>
+                    <th> 
+                        <div> 
                             <p>Costo</p> 
                             <BsArrowDownUp className='icon-arrow'/> 
                         </div> 

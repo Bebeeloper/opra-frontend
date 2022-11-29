@@ -31,6 +31,7 @@ function ModalPostProduct({
       body: JSON.stringify({
           ref: data.ref,
           name: data.name,
+          quantity: data.quantity,
           cost: parseInt(data.cost),
           price:  parseInt(data.price),
           image: data.image

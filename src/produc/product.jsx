@@ -15,6 +15,7 @@ function Product({product, index}) {
       </td>
       <td>{product.ref}</td>
       <td>{product.name}</td>
+      <td>{product.quantity}</td>
       <td>{product.cost}</td>
       <td>{product.price}</td>
       <td className='edit-delete'><AiFillEdit/></td>
