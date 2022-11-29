@@ -23,27 +23,6 @@ function Products(){
 
       const addProduct = event =>{
         setOpenModal(true);
-        // fetch('http://localhost:3002/api/v1/products', {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         ref: '0005',
-        //         name: 'Bicicletaaaa',
-        //         cost: 10000,
-        //         price: 20000,
-        //         image: 'https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2022/08/toyota-t-bike-bicicleta-electrica-toyota-2791257.jpg'
-        //     }),
-        //     headers: {
-        //       'Content-type': 'application/json; charset=UTF-8',
-        //     },
-        //   })
-        //      .then((response) => response.json())
-        //      .then((data) => {
-        //         console.log(data);
-        //         // Handle data
-        //      })
-        //      .catch((err) => {
-        //         console.log(err.message);
-        //      });
       };
 
       const onChangeSearch = event =>{
@@ -67,7 +46,13 @@ function Products(){
 
   return (
       <main className='main-container'>
-        <ModalPostProduct isOpen={openModal} openModal={openModal} setOpenModal={setOpenModal} />
+        <ModalPostProduct 
+            productsNameArray={productsNameArray} 
+            setProductsName={setProductsName} 
+            isOpen={openModal} 
+            openModal={openModal} 
+            setOpenModal={setOpenModal} 
+        />
         <h1>Inventario</h1>
         <section className='products-container'>
             <div className='product-filters'>
