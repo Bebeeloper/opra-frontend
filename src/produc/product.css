@@ -15,10 +15,18 @@
 .product-card .td-image figure {
     padding: 1rem 0.5rem 0.5rem 0.5rem;
     width: 9rem;
+    height: 9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 1rem;
+    overflow: hidden; */
 }
 
 .product-card .td-image figure img{
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: scale-down;
     border-radius: 1rem;
 }
 

@@ -11,6 +11,7 @@ function Products(){
 
     const [productsNameArray, setProductsName] = useState([]);
     const [openModal, setOpenModal] = useState(false);
+    const [editing, setEditing] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:3002/api/v1/products")
@@ -51,7 +52,9 @@ function Products(){
             setProductsName={setProductsName} 
             isOpen={openModal} 
             openModal={openModal} 
-            setOpenModal={setOpenModal} 
+            setOpenModal={setOpenModal}
+            editing={editing}
+            setEditing={setEditing}
         />
         <h1>Inventario</h1>
         <section className='products-container'>
@@ -75,8 +78,14 @@ function Products(){
                     <th> 
                         <div> 
                             <p>Nombre del producto</p> 
-                            <BsArrowDownUp className='icon-arrow'/> 
+                            <BsArrowDownUp className='icon-arrow'/>
                         </div> 
+                    </th>
+                    <th>
+                    <div> 
+                        <p>Cantidad</p>
+                        <BsArrowDownUp className='icon-arrow'/>
+                    </div> 
                     </th>
                     <th> 
                         <div> 
@@ -95,7 +104,15 @@ function Products(){
                 </tr>
                 {
                     productsNameArray.map((prod, i) => (
-                        <Product product = {prod} key={prod.refId} index={i}/>
+                        <Product 
+                            product = {prod} 
+                            key={prod.refId} 
+                            index={i}
+                            editing={editing}
+                            setEditing={setEditing}
+                            openModal={openModal} 
+                            setOpenModal={setOpenModal}
+                        />
                     )) 
                 }
             </table>
