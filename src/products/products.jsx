@@ -12,6 +12,7 @@ function Products(){
     const [productsNameArray, setProductsName] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [editing, setEditing] = useState(false);
+    const [editProduct, setEditProduct] = useState({});
 
     useEffect(() => {
         fetch("http://localhost:3002/api/v1/products")
@@ -55,6 +56,7 @@ function Products(){
             setOpenModal={setOpenModal}
             editing={editing}
             setEditing={setEditing}
+            editProduct={editProduct}
         />
         <h1>Inventario</h1>
         <section className='products-container'>
@@ -112,6 +114,8 @@ function Products(){
                             setEditing={setEditing}
                             openModal={openModal} 
                             setOpenModal={setOpenModal}
+                            editProduct={editProduct}
+                            setEditProduct={setEditProduct}
                         />
                     )) 
                 }

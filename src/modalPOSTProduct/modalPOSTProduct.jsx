@@ -14,7 +14,8 @@ function ModalPostProduct({
   productsNameArray, 
   setProductsName,
   editing,
-  setEditing
+  setEditing,
+  editProduct
 }) {
 
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -141,38 +142,38 @@ function ModalPostProduct({
                     <label htmlFor="">Referencia</label>
                     <input type="text" placeholder='Referencia' {...register('ref', {
                       required: true
-                    })} />
+                    })} defaultValue={editProduct.ref} />
                     {/* {errors.ref?.type === 'required' && <p>Debe llenar el campo</p> */}
                   </div>
                   <div>
                     <label htmlFor="">Nombre</label>
                     <input type="text" placeholder='Nombre' {...register('name', {
                       required: true
-                    })}  />
+                    })} defaultValue={editProduct.name} />
                   </div>
                   <div>
                     <label htmlFor="">Cantidad</label>
                     <input type="number" placeholder='Cantidad' {...register('quantity', {
                       required: true
-                    })}  />
+                    })} defaultValue={editProduct.quantity} />
                   </div>
                   <div>
                     <label htmlFor="">Costo</label>
                     <input type="number" placeholder='Costo' {...register('cost', {
                       required: true
-                    })} />
+                    })} defaultValue={editProduct.cost} />
                   </div>
                   <div>
                     <label htmlFor="">Precio</label>
                     <input type="number" placeholder='Precio' {...register('price', {
                       required: true
-                    })} />
+                    })} defaultValue={editProduct.price} />
                   </div>
                   <div>
                     <label htmlFor="">Imagen</label>
                     <input type="text" placeholder='Imagen' {...register('image', {
                       required: true
-                    })} />
+                    })} defaultValue={editProduct.image} />
                   </div>
                 </form>
               :

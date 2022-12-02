@@ -4,12 +4,30 @@ import { MdDeleteForever } from 'react-icons/md';
 import { AiFillEdit } from 'react-icons/ai';
 
 /// change this line
-function Product({product, index, editing, setEditing, openModal, setOpenModal}) {
+function Product({
+  product, 
+  index, 
+  editing, 
+  setEditing, 
+  openModal, 
+  setOpenModal,
+  editProduct,
+  setEditProduct
+}) {
 
   const editItem = event => {
     setEditing(true);
     // alert(editing);
     setOpenModal(true);
+    setEditProduct({
+      refId: product.refId,
+      ref: product.ref,
+      name: product.name,
+      quantity: product.quantity,
+      cost: product.cost,
+      price: product.price,
+      image: product.image
+    });
   }
 
   return (
