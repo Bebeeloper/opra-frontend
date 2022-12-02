@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { MdCancel } from 'react-icons/md';
 import { RiSave3Fill } from 'react-icons/ri';
 import { useState } from 'react';
+// import { Product } from '../produc/product';
 
 /// change this line
 function ModalPostProduct({
@@ -23,50 +24,88 @@ function ModalPostProduct({
 
   const closeModal = (data) =>{
     setOpenModal(false);
+    setEditing(false)
     reset()
   }
 
   const postOneProduct = (data) => {
-    // setPosting(false);
-    console.log('Errorsitos: ',errors);
 
-    if (JSON.stringify(errors) === '{}') {
-      setPosting(true);
-    }
+    if (!editing) {
+      if (JSON.stringify(errors) === '{}') {
+        setPosting(true);
+      }
+  
+      fetch('http://localhost:3002/api/v1/products', {
+        method: 'POST',
+        body: JSON.stringify({
+            ref: data.ref,
+            name: data.name,
+            quantity: parseInt(data.quantity),
+            cost: parseInt(data.cost),
+            price:  parseInt(data.price),
+            image: data.image
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+      
+      setTimeout(() => {
+        fetch("http://localhost:3002/api/v1/products")
+            .then((response) => response.json())
+            .then((data) => {
+              setProductsName(data); 
+            });
+            setOpenModal(false);
+            // setPosting(true);
+            setPosting(false);
+      }, 2000);
+      reset();
+    }else{
 
-    fetch('http://localhost:3002/api/v1/products', {
-      method: 'POST',
-      body: JSON.stringify({
+      fetch('http://localhost:3002/api/v1/products/' + editProduct.refId, {
+        method: 'PATCH',
+        body: JSON.stringify({
           ref: data.ref,
           name: data.name,
-          quantity: parseInt(data.quantity),
-          cost: parseInt(data.cost),
-          price:  parseInt(data.price),
+          quantity: data.quantity,
+          cost: data.cost,
+          price: data.price,
           image: data.image
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-    
-    setTimeout(() => {
-      fetch("http://localhost:3002/api/v1/products")
-          .then((response) => response.json())
-          .then((data) => {
-            setProductsName(data); 
-          });
-          setOpenModal(false);
-          // setPosting(true);
-          setPosting(false);
-    }, 2000);
-    reset();
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+      setTimeout(() => {
+        fetch("http://localhost:3002/api/v1/products")
+            .then((response) => response.json())
+            .then((data) => {
+              setProductsName(data); 
+            });
+            setOpenModal(false);
+            // setPosting(true);
+            setPosting(false);
+            setEditing(false)
+      }, 2000);
+      reset();
+    }
+
   }
 
   return (
