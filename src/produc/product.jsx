@@ -30,6 +30,10 @@ function Product({
     });
   }
 
+  const deleteItem = event => {
+    
+  }
+
   return (
     <tr className='product-card'>
       <td>{index + 1}</td>
@@ -43,8 +47,8 @@ function Product({
       <td>{product.quantity}</td>
       <td>{product.cost}</td>
       <td>{product.price}</td>
-      <td className='edit-delete' onClick={editItem}><AiFillEdit/></td>
-      <td className='edit-delete'><MdDeleteForever/></td>
+      <td className='edit' onClick={editItem}><AiFillEdit/></td>
+      <td className='delete' onClick={deleteItem}><MdDeleteForever/></td>
     </tr>
   )
 }

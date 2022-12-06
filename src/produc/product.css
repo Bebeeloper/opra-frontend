@@ -30,13 +30,29 @@
     border-radius: 1rem;
 }
 
-.product-card .edit-delete{
+.product-card .edit{
+    text-align: center;
+    cursor: pointer;
+    font-size: 2rem;
+}
+.product-card .delete{
     text-align: center;
     cursor: pointer;
     font-size: 2rem;
 }
 
-.product-card .edit-delete:hover{
+.product-card .edit:hover{
     color: blueviolet;
     /* color: white; */
+} /* color: white; */
+
+.product-card .delete{
+    text-align: center;
+    cursor: pointer;
+    font-size: 2rem;
 }
+
+.product-card .delete:hover{
+    color: rgb(226, 43, 43);
+    /* color: white; */
+} 

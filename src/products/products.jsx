@@ -4,7 +4,7 @@ import { Product } from '../produc/product';
 import { BsArrowDownUp } from 'react-icons/bs';
 import { TbFaceIdError } from 'react-icons/tb';
 import { FcAddDatabase } from 'react-icons/fc';
-
+import { ModalDelete } from '../modalDelete/modalDelete';
 import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
   
 function Products(){
@@ -45,9 +45,11 @@ function Products(){
                 });
         }
       };
+      
 
   return (
       <main className='main-container'>
+        <ModalDelete />
         <ModalPostProduct 
             productsNameArray={productsNameArray} 
             setProductsName={setProductsName} 
@@ -57,6 +59,7 @@ function Products(){
             editing={editing}
             setEditing={setEditing}
             editProduct={editProduct}
+            setEditProduct={setEditProduct}
         />
         <h1>Inventario</h1>
         <section className='products-container'>

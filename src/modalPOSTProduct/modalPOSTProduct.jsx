@@ -16,7 +16,8 @@ function ModalPostProduct({
   setProductsName,
   editing,
   setEditing,
-  editProduct
+  editProduct,
+  setEditProduct
 }) {
 
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -30,10 +31,11 @@ function ModalPostProduct({
 
   const postOneProduct = (data) => {
 
+    if (JSON.stringify(errors) === '{}') {
+      setPosting(true);
+    }
+
     if (!editing) {
-      if (JSON.stringify(errors) === '{}') {
-        setPosting(true);
-      }
   
       fetch('http://localhost:3002/api/v1/products', {
         method: 'POST',
@@ -101,7 +103,16 @@ function ModalPostProduct({
             setOpenModal(false);
             // setPosting(true);
             setPosting(false);
-            setEditing(false)
+            setEditing(false);
+            setEditProduct({
+              refId: editProduct.refId,
+              ref: data.ref,
+              name: data.name,
+              quantity: data.quantity,
+              cost: data.cost,
+              price: data.price,
+              image: data.image
+            })
       }, 2000);
       reset();
     }
@@ -200,7 +211,7 @@ function ModalPostProduct({
                     <label htmlFor="">Costo</label>
                     <input type="number" placeholder='Costo' {...register('cost', {
                       required: true
-                    })} defaultValue={editProduct.cost} />
+                    })} defaultValue={editProduct.cost} data-type="currency"/>
                   </div>
                   <div>
                     <label htmlFor="">Precio</label>
