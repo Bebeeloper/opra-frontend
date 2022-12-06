@@ -21,6 +21,7 @@
 .main-container .products-container .product-filters{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .main-container .products-container .product-filters button{
