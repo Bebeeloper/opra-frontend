@@ -13,6 +13,9 @@ function Products(){
     const [openModal, setOpenModal] = useState(false);
     const [editing, setEditing] = useState(false);
     const [editProduct, setEditProduct] = useState({});
+    const [deleteOpen, setDeleteOpen] = useState(false);
+    const [deleteId, setDeleteId] = useState('')
+    const [deleting, setDeleting] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:3002/api/v1/products")
@@ -49,7 +52,16 @@ function Products(){
 
   return (
       <main className='main-container'>
-        <ModalDelete />
+        <ModalDelete 
+            deleteOpen={deleteOpen}
+            setDeleteOpen={setDeleteOpen}
+            deleteId={deleteId}
+            setDeleteId={setDeleteId}
+            deleting={deleting}
+            setDeleting={setDeleting}
+            productsNameArray={productsNameArray}
+            setProductsName={setProductsName}
+        />
         <ModalPostProduct 
             productsNameArray={productsNameArray} 
             setProductsName={setProductsName} 
@@ -119,6 +131,10 @@ function Products(){
                             setOpenModal={setOpenModal}
                             editProduct={editProduct}
                             setEditProduct={setEditProduct}
+                            deleteOpen={deleteOpen}
+                            setDeleteOpen={setDeleteOpen}
+                            deleteId={deleteId}
+                            setDeleteId={setDeleteId}
                         />
                     )) 
                 }

@@ -12,7 +12,11 @@ function Product({
   openModal, 
   setOpenModal,
   editProduct,
-  setEditProduct
+  setEditProduct,
+  deleteOpen,
+  setDeleteOpen,
+  deleteId,
+  setDeleteId
 }) {
 
   const editItem = event => {
@@ -31,7 +35,9 @@ function Product({
   }
 
   const deleteItem = event => {
-    
+    setDeleteOpen(true);
+    setDeleteId(product.refId);
+    console.log('Algo está sucediendo: ', deleteId);
   }
 
   return (
