@@ -23,9 +23,18 @@
     align-items: center;
     justify-content: space-between;
 }
-
+.main-container .products-container .product-filters .Buttons{
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    height: 100%;
+}
+.main-container .products-container .product-filters .Buttons .import{
+    font-size: 3rem;
+    color: rgb(187, 130, 187);
+}
 .main-container .products-container .product-filters button{
-    margin-left: 1rem;
+    margin-left: 3rem;
     width: 4rem;
     height: 4rem;
     display: flex;
@@ -36,7 +45,7 @@
     background-color: transparent;
     font-size: 5rem;
     cursor: pointer;
-    /* color: white; */
+    color: black;
 }
 
 .main-container .products-container input{

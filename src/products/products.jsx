@@ -4,9 +4,11 @@ import { Product } from '../produc/product';
 import { BsArrowDownUp } from 'react-icons/bs';
 import { TbFaceIdError } from 'react-icons/tb';
 import { FcAddDatabase } from 'react-icons/fc';
+import { FaFileImport } from 'react-icons/fa';
 import { ModalDelete } from '../modalDelete/modalDelete';
 import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
   
+
 function Products(){
 
     const [productsNameArray, setProductsName] = useState([]);
@@ -48,6 +50,9 @@ function Products(){
                 });
         }
       };
+      const importProducts = event =>{
+        alert('preparese para importar caremondá');
+      }
       
 
   return (
@@ -80,7 +85,10 @@ function Products(){
                     <input id='filter' placeholder='Filtrar producto por nombre' type="text" onChange={onChangeSearch} />
                     {/* <button onClick={filterByName}><FiSearch/></button> */}
                 {/* </div> */}
-                <button onClick={addProduct}> <FcAddDatabase/> </button>
+                <div className='Buttons'>
+                    <button className='import' onClick={importProducts}> <FaFileImport/></button>
+                    <button onClick={addProduct}> <FcAddDatabase/> </button>
+                </div>
             </div>
             <table>
                 <tr className='header-table'>

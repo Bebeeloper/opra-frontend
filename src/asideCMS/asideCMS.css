@@ -30,3 +30,12 @@
     color: white;
 }
 
+.product-cms-container ul li a{
+    width: 100%;
+    text-decoration: none;
+}
+
+.product-cms-container ul li:hover a{
+    color: white;
+}
+
