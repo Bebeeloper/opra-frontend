@@ -7,6 +7,7 @@ import { FcAddDatabase } from 'react-icons/fc';
 import { FaFileImport } from 'react-icons/fa';
 import { ModalDelete } from '../modalDelete/modalDelete';
 import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
+import { ModalImportExcel } from '../modalImportExcel/modalImportExcel';
   
 
 function Products(){
@@ -50,13 +51,15 @@ function Products(){
                 });
         }
       };
+
       const importProducts = event =>{
-        alert('preparese para importar caremondá');
+        alert('Importar modal');
       }
       
 
   return (
       <main className='main-container'>
+        <ModalImportExcel/>
         <ModalDelete 
             deleteOpen={deleteOpen}
             setDeleteOpen={setDeleteOpen}
