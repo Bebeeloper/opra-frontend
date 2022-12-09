@@ -6,7 +6,7 @@ function ModalImportExcel() {
     return(
         <div className='modal-background'>
             <div className="modal-import-excel">
-                
+                <input type="file" />
             </div>
         </div>
     )
