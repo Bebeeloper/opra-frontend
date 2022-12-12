@@ -4,6 +4,10 @@ import * as XLSX from 'xlsx';
 import { FiUpload } from 'react-icons/fi';
 import { MdCancel } from 'react-icons/md';
 
+// let timeOut = 0;
+// let timeTaken = 0;
+// let startTime = new Date();
+
 function ModalImportExcel({
     importOpen,
     setImportOpen,
@@ -25,41 +29,52 @@ function ModalImportExcel({
         console.log(file);
     }
 
-    const importMassiveData = event => {
+    const importMassiveData = async event => {
+        
+        // let timeOut;
+        // let timeTaken;
+        let start;
 
-        for (let index = 0; index < jsonData.length; index++) {
-            fetch('http://localhost:3002/api/v1/products', {
-            method: 'POST',
-            body: JSON.stringify({
-                ref: jsonData[index].ref,
-                name: jsonData[index].name,
-                quantity: parseInt(jsonData[index].quantity),
-                cost: parseInt(jsonData[index].cost),
-                price:  parseInt(jsonData[index].price),
-                image: jsonData[index].image
-            }),
-            headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
-        }
-        setTimeout(() => {
-            fetch("http://localhost:3002/api/v1/products")
+        if (jsonData[0].image && jsonData[0].ref && jsonData[0].name && jsonData[0].quantity && jsonData[0].cost && jsonData[0].price) {
+            for (let index = 0; index < jsonData.length; index++) {
+
+                start = new Date();
+                await fetch('http://localhost:3002/api/v1/products', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        ref: jsonData[index].ref,
+                        name: jsonData[index].name,
+                        quantity: parseInt(jsonData[index].quantity),
+                        cost: parseInt(jsonData[index].cost),
+                        price:  parseInt(jsonData[index].price),
+                        image: jsonData[index].image
+                }),
+                headers: {
+                  'Content-type': 'application/json; charset=UTF-8',
+                },
+                })
                 .then((response) => response.json())
                 .then((data) => {
-                    setProductsName(data);
+                    console.log(data);
+                    
+                })
+                .catch((err) => {
+                    console.log(err.message);
                 });
-                // setDeleteOpen(false);
-                setImportOpen(false);
-                // setDeleting(false);
-        }, 2000);
+            }
+            setTimeout(() => {
+                fetch("http://localhost:3002/api/v1/products")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        setProductsName(data);
+                    });
+                    // setDeleteOpen(false);
+                    setImportOpen(false);
+                    // setDeleting(false);
+            }, 2000);
+        }else{
+            alert('Debe llenar las columnas obligatorias');
+        }
 
     }
 
