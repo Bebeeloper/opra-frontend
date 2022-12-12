@@ -6,7 +6,7 @@ import { TbFaceIdError } from 'react-icons/tb';
 import { FcAddDatabase } from 'react-icons/fc';
 import { ModalDelete } from '../modalDelete/modalDelete';
 import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
-import * as XLSX from 'xlsx';
+import { ModalImportExcel } from '../modalImportExcel/modalImportExcel';
   
 function Products(){
 
@@ -17,6 +17,7 @@ function Products(){
     const [deleteOpen, setDeleteOpen] = useState(false);
     const [deleteId, setDeleteId] = useState('')
     const [deleting, setDeleting] = useState(false);
+    const [importOpen, setImportOpen] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:3002/api/v1/products")
@@ -49,21 +50,19 @@ function Products(){
                 });
         }
       };
-      
-      const handleFile = async (e) => {
-        const file = e.target.files[0];
-        const data = await file.arrayBuffer();
-        const workbook = XLSX.read(data);
-        const workSheet = workbook.Sheets[workbook.SheetNames[0]];
-        const jsonData = XLSX.utils.sheet_to_json(workSheet);
 
-        console.log(jsonData);
-        console.log(workbook);
-        console.log(file);
+      const importMassive = event => {
+        setImportOpen(true);
       }
 
   return (
       <main className='main-container'>
+        <ModalImportExcel 
+            importOpen={importOpen}
+            setImportOpen={setImportOpen}
+            productsNameArray={productsNameArray} 
+            setProductsName={setProductsName}
+        />
         <ModalDelete 
             deleteOpen={deleteOpen}
             setDeleteOpen={setDeleteOpen}
@@ -85,7 +84,6 @@ function Products(){
             editProduct={editProduct}
             setEditProduct={setEditProduct}
         />
-        <input type="file" onChange={(e) => handleFile(e) }/>
         <h1>Inventario</h1>
         <section className='products-container'>
             <div className='product-filters'>
@@ -93,6 +91,7 @@ function Products(){
                     <input id='filter' placeholder='Filtrar producto por nombre' type="text" onChange={onChangeSearch} />
                     {/* <button onClick={filterByName}><FiSearch/></button> */}
                 {/* </div> */}
+                <button onClick={importMassive}> <FcAddDatabase/> </button>
                 <button onClick={addProduct}> <FcAddDatabase/> </button>
             </div>
             <table>
