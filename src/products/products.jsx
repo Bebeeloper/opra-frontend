@@ -6,6 +6,7 @@ import { TbFaceIdError } from 'react-icons/tb';
 import { FcAddDatabase } from 'react-icons/fc';
 import { ModalDelete } from '../modalDelete/modalDelete';
 import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
+import * as XLSX from 'xlsx';
   
 function Products(){
 
@@ -49,6 +50,17 @@ function Products(){
         }
       };
       
+      const handleFile = async (e) => {
+        const file = e.target.files[0];
+        const data = await file.arrayBuffer();
+        const workbook = XLSX.read(data);
+        const workSheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(workSheet);
+
+        console.log(jsonData);
+        console.log(workbook);
+        console.log(file);
+      }
 
   return (
       <main className='main-container'>
@@ -73,6 +85,7 @@ function Products(){
             editProduct={editProduct}
             setEditProduct={setEditProduct}
         />
+        <input type="file" onChange={(e) => handleFile(e) }/>
         <h1>Inventario</h1>
         <section className='products-container'>
             <div className='product-filters'>
