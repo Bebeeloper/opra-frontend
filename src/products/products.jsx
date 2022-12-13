@@ -7,6 +7,7 @@ import { FcAddDatabase } from 'react-icons/fc';
 import { ModalDelete } from '../modalDelete/modalDelete';
 import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
 import { ModalImportExcel } from '../modalImportExcel/modalImportExcel';
+import { RiFileExcel2Fill } from 'react-icons/ri';
   
 function Products(){
 
@@ -20,7 +21,7 @@ function Products(){
     const [importOpen, setImportOpen] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:3002/api/v1/products")
+        fetch("http://localhost:3002/api/v1/products?limit=500")
           .then((response) => response.json())
           .then((data) => {
             // setProducts(data); // ⬅️ Guardar datos
@@ -87,12 +88,11 @@ function Products(){
         <h1>Inventario</h1>
         <section className='products-container'>
             <div className='product-filters'>
-                {/* <div className='product-search'> */}
-                    <input id='filter' placeholder='Filtrar producto por nombre' type="text" onChange={onChangeSearch} />
-                    {/* <button onClick={filterByName}><FiSearch/></button> */}
-                {/* </div> */}
-                <button onClick={importMassive}> <FcAddDatabase/> </button>
-                <button onClick={addProduct}> <FcAddDatabase/> </button>
+                <input id='filter' placeholder='Filtrar producto por nombre' type="text" onChange={onChangeSearch} />
+                <div className='action-btns'>
+                    <button onClick={importMassive} className='excel-btn'> <RiFileExcel2Fill/> </button>
+                    <button onClick={addProduct}> <FcAddDatabase/> </button>
+                </div>
             </div>
             <table>
                 <tr className='header-table'>

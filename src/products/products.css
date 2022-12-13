@@ -24,6 +24,18 @@
     justify-content: space-between;
 }
 
+.main-container .products-container .product-filters input{
+    width: 50%;
+    height: 100%;
+}
+
+.main-container .products-container .product-filters .action-btns{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .main-container .products-container .product-filters button{
     margin-left: 1rem;
     width: 4rem;
@@ -37,6 +49,11 @@
     font-size: 5rem;
     cursor: pointer;
     /* color: white; */
+}
+
+.main-container .products-container .product-filters .excel-btn{
+    font-size: 3.5rem;
+    color: #43A047;
 }
 
 .main-container .products-container input{

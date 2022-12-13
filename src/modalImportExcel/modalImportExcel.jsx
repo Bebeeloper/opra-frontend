@@ -3,6 +3,7 @@ import React from 'react'
 import * as XLSX from 'xlsx';
 import { FiUpload } from 'react-icons/fi';
 import { MdCancel } from 'react-icons/md';
+import { useState } from 'react';
 
 // let timeOut = 0;
 // let timeTaken = 0;
@@ -14,6 +15,8 @@ function ModalImportExcel({
     productsNameArray,
     setProductsName
 }) {
+
+    const [importing, setImporting] = useState(false);
 
     let jsonData = {}
 
@@ -30,15 +33,12 @@ function ModalImportExcel({
     }
 
     const importMassiveData = async event => {
-        
-        // let timeOut;
-        // let timeTaken;
-        let start;
+
+        setImporting(true);
 
         if (jsonData[0].image && jsonData[0].ref && jsonData[0].name && jsonData[0].quantity && jsonData[0].cost && jsonData[0].price) {
             for (let index = 0; index < jsonData.length; index++) {
 
-                start = new Date();
                 await fetch('http://localhost:3002/api/v1/products', {
                     method: 'POST',
                     body: JSON.stringify({
@@ -68,9 +68,8 @@ function ModalImportExcel({
                     .then((data) => {
                         setProductsName(data);
                     });
-                    // setDeleteOpen(false);
                     setImportOpen(false);
-                    // setDeleting(false);
+                    setImporting(false);
             }, 2000);
         }else{
             alert('Debe llenar las columnas obligatorias');
@@ -86,12 +85,21 @@ function ModalImportExcel({
         importOpen ?
             <div className='modal-background'>
                 <div className='modal-excel'>
-                    <div className='modal-excel-header'>
-                        <h2>Cargue masivo</h2>
-                    </div>
-                    <div className='modal-excel-body'>
-                        <input type="file" name='Lo que sea' onChange={(e) => handleFile(e) }/>
-                    </div>
+                    {
+                        importing ?
+                            <div className='loading-post'>
+                                <div className='spinner'></div>
+                            </div>
+                        :
+                            <div className="header-body">
+                                <div className='modal-excel-header'>
+                                    <h2>Cargue masivo</h2>
+                                </div>
+                                <div className='modal-excel-body'>
+                                    <input type="file" name='Lo que sea' onChange={(e) => handleFile(e) }/>
+                                </div>
+                            </div>
+                    }
                     <div className='modal-excel-footer'>
                         <button className='import-btn' onClick={importMassiveData} ><span>Importar</span><FiUpload/></button>
                         <button className='cancel-btn' onClick={closeImportModal} ><span>Cancelar</span><MdCancel/></button>

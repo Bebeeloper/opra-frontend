@@ -5,7 +5,20 @@
     background-color: white;
 }
 
-.modal-background .modal-excel .modal-excel-header {
+.modal-background .modal-excel .loading-post{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-background .modal-excel .header-body{
+    width: 100%;
+    height: 75%;
+}
+
+.modal-background .modal-excel .header-body .modal-excel-header {
     width: 100%;
     height: 25%;
     display: flex;
@@ -17,9 +30,9 @@
     margin-left: 2rem;
 }
 
-.modal-background .modal-excel .modal-excel-body{
+.modal-background .modal-excel .header-body .modal-excel-body{
     width: 100%;
-    height: 50%;
+    height: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
