@@ -1,11 +1,20 @@
 .product-card {
     /* background-color: aqua; */
     border-bottom: 0.1rem solid rgba(168, 168, 168, 0.219);
+    /* background-color: aqua; */
 }
 
 .product-card td:first-child {
     text-align: center;
 }
+
+.product-card:hover {
+    background-color: #d1c4e98f;
+}
+/* 
+.product-card:hover td {
+    color: white;
+} */
 
 .product-card .td-image {
     margin: 0;

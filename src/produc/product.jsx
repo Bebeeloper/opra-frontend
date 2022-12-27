@@ -62,7 +62,12 @@ function Product({
           content="Editar este producto" 
           place="top"
       />
-      <td className='delete' onClick={deleteItem}><MdDeleteForever/></td>
+      <td id={'delete-tooltip' + index} className='delete' onClick={deleteItem}><MdDeleteForever/></td>
+      <Tooltip
+          anchorId={'delete-tooltip' + index}
+          content="Eliminar este producto" 
+          place="top"
+      />
     </tr>
   )
 }
