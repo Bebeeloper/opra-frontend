@@ -66,8 +66,8 @@ function ModalDelete({
                 
               </div>
               <div className="delete-footer">
-                <button className='delete-btn' onClick={deleteProduct}><span>Eliminar</span><MdDeleteForever /></button>
                 <button className='cancel-btn' onClick={closeDeleteModal}><span>Cancelar</span><MdCancel /></button>
+                <button className='delete-btn' onClick={deleteProduct}><span>Eliminar</span><MdDeleteForever /></button>
               </div>
             </div>
         </div>

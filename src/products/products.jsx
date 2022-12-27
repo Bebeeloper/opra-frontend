@@ -8,6 +8,8 @@ import { ModalDelete } from '../modalDelete/modalDelete';
 import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
 import { ModalImportExcel } from '../modalImportExcel/modalImportExcel';
 import { RiFileExcel2Fill } from 'react-icons/ri';
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
   
 function Products(){
 
@@ -21,7 +23,8 @@ function Products(){
     const [importOpen, setImportOpen] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:3002/api/v1/products?limit=500")
+        // fetch("http://localhost:3002/api/v1/products?limit=10")
+        fetch("http://localhost:3002/api/v1/products")
           .then((response) => response.json())
           .then((data) => {
             // setProducts(data); // ⬅️ Guardar datos
@@ -88,10 +91,20 @@ function Products(){
         <h1>Inventario</h1>
         <section className='products-container'>
             <div className='product-filters'>
-                <input id='filter' placeholder='Filtrar producto por nombre' type="text" onChange={onChangeSearch} />
+                <input id='filter' placeholder='Filtrar producto por nombre o referencia' type="text" onChange={onChangeSearch} />
                 <div className='action-btns'>
-                    <button onClick={importMassive} className='excel-btn'> <RiFileExcel2Fill/> </button>
-                    <button onClick={addProduct}> <FcAddDatabase/> </button>
+                    <button id="excel-Tooltip" onClick={importMassive} className='excel-btn'> <RiFileExcel2Fill/> </button>
+                    <Tooltip
+                        anchorId="excel-Tooltip" 
+                        content="Importar de excel" 
+                        place="top"
+                    />
+                    <button id="add-product-Tooltip" onClick={addProduct}> <FcAddDatabase/> </button>
+                    <Tooltip
+                        anchorId="add-product-Tooltip" 
+                        content="Agregar un producto al inventario" 
+                        place="top"
+                    />
                 </div>
             </div>
             <table>

@@ -173,8 +173,8 @@ function ModalPostProduct({
                 </div>
             }
             <div className='modal-footer'>
-              <button type="submit" form="product-form" className='save-modal-btn'><span>Guardar</span><RiSave3Fill /></button>
               <button onClick={closeModal} className='cancel-modal-btn'><span>Cancelar</span><MdCancel /></button>
+              <button type="submit" form="product-form" className='save-modal-btn'><span>Guardar</span><RiSave3Fill /></button>
             </div>
           </div>
       </div>
@@ -232,8 +232,8 @@ function ModalPostProduct({
                 </div>
             }
             <div className='modal-footer'>
-              <button type="submit" form="product-form" className='save-modal-btn'><span>Guardar</span><RiSave3Fill /></button>
               <button onClick={closeModal} className='cancel-modal-btn'><span>Cancelar</span><MdCancel /></button>
+              <button type="submit" form="product-form" className='save-modal-btn'><span>Guardar</span><RiSave3Fill /></button>
             </div>
           </div>
       </div>

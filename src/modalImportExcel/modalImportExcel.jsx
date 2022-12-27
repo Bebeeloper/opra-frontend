@@ -73,6 +73,8 @@ function ModalImportExcel({
             }, 2000);
         }else{
             alert('Debe llenar las columnas obligatorias');
+            setImporting(false);
+            return;
         }
 
     }
@@ -96,13 +98,13 @@ function ModalImportExcel({
                                     <h2>Cargue masivo</h2>
                                 </div>
                                 <div className='modal-excel-body'>
-                                    <input type="file" name='Lo que sea' onChange={(e) => handleFile(e) }/>
+                                    <input type="file" accept='.xlsx' name='Lo que sea' onChange={(e) => handleFile(e) }/>
                                 </div>
                             </div>
                     }
                     <div className='modal-excel-footer'>
-                        <button className='import-btn' onClick={importMassiveData} ><span>Importar</span><FiUpload/></button>
                         <button className='cancel-btn' onClick={closeImportModal} ><span>Cancelar</span><MdCancel/></button>
+                        <button className='import-btn' onClick={importMassiveData} ><span>Importar</span><FiUpload/></button>
                     </div>
                 </div>
             </div>
