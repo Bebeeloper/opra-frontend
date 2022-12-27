@@ -3,6 +3,9 @@ import {React} from 'react'
 import { MdDeleteForever } from 'react-icons/md';
 import { AiFillEdit } from 'react-icons/ai';
 
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
+
 /// change this line
 function Product({
   product, 
@@ -53,7 +56,12 @@ function Product({
       <td>{product.quantity}</td>
       <td>{product.cost}</td>
       <td>{product.price}</td>
-      <td className='edit' onClick={editItem}><AiFillEdit/></td>
+      <td id={'edit-tooltip' + index} className='edit' onClick={editItem}><AiFillEdit/></td>
+      <Tooltip
+          anchorId={'edit-tooltip' + index }
+          content="Editar este producto" 
+          place="top"
+      />
       <td className='delete' onClick={deleteItem}><MdDeleteForever/></td>
     </tr>
   )

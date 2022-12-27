@@ -8,10 +8,44 @@ import { ModalDelete } from '../modalDelete/modalDelete';
 import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
 import { ModalImportExcel } from '../modalImportExcel/modalImportExcel';
 import { RiFileExcel2Fill } from 'react-icons/ri';
+import { RiFileExcel2Line } from 'react-icons/ri';
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
+
+import ReactExport from "react-export-excel";
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
   
 function Products(){
+
+    const dataSet1 = [
+        {
+            name: "Johson",
+            amount: 30000,
+            sex: 'M',
+            is_married: true
+        },
+        {
+            name: "Monika",
+            amount: 355000,
+            sex: 'F',
+            is_married: false
+        },
+        {
+            name: "John",
+            amount: 250000,
+            sex: 'M',
+            is_married: false
+        },
+        {
+            name: "Josef",
+            amount: 450500,
+            sex: 'M',
+            is_married: true
+        }
+    ];
 
     const [productsNameArray, setProductsName] = useState([]);
     const [openModal, setOpenModal] = useState(false);
@@ -88,14 +122,37 @@ function Products(){
             editProduct={editProduct}
             setEditProduct={setEditProduct}
         />
+        {/* <ExcelFile element={<button>Download Data from excel</button>}>
+            <ExcelSheet data={dataSet1} name="Employees">
+                <ExcelColumn label="Name" value="name"/>
+                <ExcelColumn label="Wallet Money" value="amount"/>
+                <ExcelColumn label="Gender" value="sex"/>
+                <ExcelColumn label="Marital Status"
+                                value={(col) => col.is_married ? "Married" : "Single"}/>
+            </ExcelSheet>
+        </ExcelFile> */}
         <h1>Inventario</h1>
         <section className='products-container'>
             <div className='product-filters'>
                 <input id='filter' placeholder='Filtrar producto por nombre o referencia' type="text" onChange={onChangeSearch} />
                 <div className='action-btns'>
-                    <button id="excel-Tooltip" onClick={importMassive} className='excel-btn'> <RiFileExcel2Fill/> </button>
+                    <ExcelFile element={<button id="excel-export-Tooltip" className='excel-export-btn'> <RiFileExcel2Line/> </button>}>
+                        <ExcelSheet data={dataSet1} name="Employees">
+                            <ExcelColumn label="Name" value="name"/>
+                            <ExcelColumn label="Wallet Money" value="amount"/>
+                            <ExcelColumn label="Gender" value="sex"/>
+                            <ExcelColumn label="Marital Status"
+                                            value={(col) => col.is_married ? "Married" : "Single"}/>
+                        </ExcelSheet>
+                    </ExcelFile>
                     <Tooltip
-                        anchorId="excel-Tooltip" 
+                        anchorId="excel-export-Tooltip" 
+                        content="Exportar plantilla de excel" 
+                        place="top"
+                    />
+                    <button id="excel-import-Tooltip" onClick={importMassive} className='excel-btn'> <RiFileExcel2Fill/> </button>
+                    <Tooltip
+                        anchorId="excel-import-Tooltip" 
                         content="Importar de excel" 
                         place="top"
                     />

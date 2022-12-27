@@ -51,6 +51,10 @@
     /* color: white; */
 }
 
+.main-container .products-container .product-filters .excel-export-btn{
+    font-size: 3.5rem;
+    color: #43A047;
+}
 .main-container .products-container .product-filters .excel-btn{
     font-size: 3.5rem;
     color: #43A047;
