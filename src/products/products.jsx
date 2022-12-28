@@ -3,7 +3,7 @@ import { React, useEffect, useState } from 'react'
 import { Product } from '../produc/product';
 import { BsArrowDownUp } from 'react-icons/bs';
 import { TbFaceIdError } from 'react-icons/tb';
-import { FcAddDatabase } from 'react-icons/fc';
+import { AiFillFileAdd } from 'react-icons/ai';
 import { ModalDelete } from '../modalDelete/modalDelete';
 import { ModalPostProduct } from '../modalPOSTProduct/modalPOSTProduct';
 import { ModalImportExcel } from '../modalImportExcel/modalImportExcel';
@@ -156,7 +156,7 @@ function Products(){
                         content="Importar de excel" 
                         place="top"
                     />
-                    <button id="add-product-Tooltip" onClick={addProduct}> <FcAddDatabase/> </button>
+                    <button id="add-product-Tooltip" onClick={addProduct} className='add-product-btn'> <AiFillFileAdd/> </button>
                     <Tooltip
                         anchorId="add-product-Tooltip" 
                         content="Agregar un producto al inventario" 

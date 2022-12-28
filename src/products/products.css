@@ -49,14 +49,36 @@
     font-size: 5rem;
     cursor: pointer;
     /* color: white; */
+    /* background-color: aqua; */
+}
+
+.main-container .products-container .product-filters .add-product-btn{
+    font-size: 3.5rem;
+    color: #030303;
+}
+
+.main-container .products-container .product-filters .add-product-btn:hover{
+    font-size: 3.5rem;
+    color: #cab7db;
 }
 
 .main-container .products-container .product-filters .excel-export-btn{
     font-size: 3.5rem;
+    color: #000000;
+}
+
+.main-container .products-container .product-filters .excel-export-btn:hover{
+    /* font-size: 3.5rem; */
     color: #43A047;
 }
+
 .main-container .products-container .product-filters .excel-btn{
     font-size: 3.5rem;
+    color: #000000;
+}
+
+.main-container .products-container .product-filters .excel-btn:hover{
+    /* font-size: 3.5rem; */
     color: #43A047;
 }
 
