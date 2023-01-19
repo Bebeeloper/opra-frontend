@@ -72,7 +72,7 @@ function ModalPostProduct({
       reset();
     }else{
 
-      fetch('http://localhost:3002/api/v1/products/' + editProduct.refId, {
+      fetch('http://localhost:3002/api/v1/products/' + editProduct.id, {
         method: 'PATCH',
         body: JSON.stringify({
           ref: data.ref,
@@ -105,7 +105,7 @@ function ModalPostProduct({
             setPosting(false);
             setEditing(false);
             setEditProduct({
-              refId: editProduct.refId,
+              id: editProduct.id,
               ref: data.ref,
               name: data.name,
               quantity: data.quantity,

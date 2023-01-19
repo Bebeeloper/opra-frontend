@@ -205,7 +205,7 @@ function Products(){
                     productsNameArray.map((prod, i) => (
                         <Product 
                             product = {prod} 
-                            key={prod.refId} 
+                            key={prod.id} 
                             index={i}
                             editing={editing}
                             setEditing={setEditing}

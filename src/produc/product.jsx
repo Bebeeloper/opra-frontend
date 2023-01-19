@@ -27,7 +27,7 @@ function Product({
     // alert(editing);
     setOpenModal(true);
     setEditProduct({
-      refId: product.refId,
+      id: product.id,
       ref: product.ref,
       name: product.name,
       quantity: product.quantity,
@@ -39,7 +39,7 @@ function Product({
 
   const deleteItem = event => {
     setDeleteOpen(true);
-    setDeleteId(product.refId);
+    setDeleteId(product.id);
     console.log('Algo está sucediendo: ', deleteId);
   }
 
