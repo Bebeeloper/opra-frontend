@@ -73,7 +73,7 @@ function Products(){
       const onChangeSearch = event =>{
         let productName = document.getElementById('filter');
         if (productName.value !== '') {
-            fetch("http://localhost:3002/api/v1/products/name/" + productName.value)
+            fetch("http://localhost:3002/api/v1/products/name/" + productName.value.toLowerCase())
               .then((response) => response.json())
               .then((data) => {
                 setProductsName(data.data); // ⬅️ Guardar datos
